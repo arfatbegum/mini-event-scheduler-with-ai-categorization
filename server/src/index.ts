@@ -15,6 +15,15 @@ app.use(express.json());
 // In-memory data store
 let events: Event[] = [];
 
+// Helper function for sorting events by date and time
+const sortEvents = (eventsArray: Event[]): Event[] => {
+    return [...eventsArray].sort((a, b) => {
+        const dateA = new Date(`${a.date}T${a.time}`);
+        const dateB = new Date(`${b.date}T${b.time}`);
+        return dateA.getTime() - dateB.getTime();
+    });
+};
+
 // --- API Endpoints ---
 
 // POST /events: Create a new event
@@ -48,6 +57,10 @@ app.post('/events', (req: Request<{}, {}, CreateEventPayload>, res: Response) =>
     res.status(201).json(newEvent);
 });
 
+// GET /events: Retrieve all events, sorted
+app.get('/events', (req: Request, res: Response) => {
+    res.status(200).json(sortEvents(events));
+});
 
 // Start the server
 app.listen(PORT, () => {
