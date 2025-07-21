@@ -6,7 +6,7 @@ import type { Event } from "./types/Event";
 import type { NewEvent } from "./types/Event";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+  import.meta.env.VITE_API_BASE_URL || "https://mini-event-scheduler-with-ai.onrender.com";
 
 function App() {
   const [events, setEvents] = useState<Event[]>([]);
