@@ -32,7 +32,7 @@ Follow these instructions to set up and run the application locally.
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/arfatbegum/mini-event-scheduler-with-ai-categorization.git](https://github.com/arfatbegum/mini-event-scheduler-with-ai-categorization.git)
+    git clone https://github.com/arfatbegum/mini-event-scheduler-with-ai-categorization.git
     cd mini-event-scheduler
     ```
 
@@ -60,7 +60,7 @@ Follow these instructions to set up and run the application locally.
 
 You can now interact with the Mini Event Scheduler!
 
-### API Endpoints (Backend: `http://localhost:5000`)
+### API Endpoints (Backend: `https://mini-event-scheduler-with-ai.onrender.com`)
 
 | Method | Endpoint      | Description                                | Request Body (JSON)                                    | Response                                       |
 | :----- | :------------ | :----------------------------------------- | :----------------------------------------------------- | :--------------------------------------------- |
