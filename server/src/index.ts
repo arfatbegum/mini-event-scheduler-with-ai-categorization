@@ -62,6 +62,33 @@ app.get('/events', (req: Request, res: Response) => {
     res.status(200).json(sortEvents(events));
 });
 
+// PUT /events/:id: Update an event's archived status to true
+app.put('/events/:id', (req: Request<{ id: string }>, res: Response) => {
+    const { id } = req.params;
+    const eventIndex = events.findIndex(event => event.id === id);
+
+    if (eventIndex === -1) {
+        return res.status(404).json({ message: 'Event not found.' });
+    }
+    // Update the event's archived status
+    events[eventIndex] = { ...events[eventIndex], archived: true };
+
+    res.status(200).json(events[eventIndex]);
+});
+
+// DELETE /events/:id: Delete an event
+app.delete('/events/:id', (req: Request<{ id: string }>, res: Response) => {
+    const { id } = req.params;
+    const initialLength = events.length;
+    events = events.filter(event => event.id !== id);
+
+    if (events.length === initialLength) {
+        return res.status(404).json({ message: 'Event not found.' });
+    }
+
+    res.status(204).send();
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
